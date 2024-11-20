@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DOM Manipulations Explained</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 20px;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .dom-section {
+            background-color: #fff;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #FF5733;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        code {
+            color: #FF5733;
+        }
+        .output {
+            background-color: #e9f7ff;
+            padding: 10px;
+            border: 1px solid #FF5733;
+            margin-top: 10px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>JavaScript DOM Manipulations</h1>
+
+    <!-- Selecting Elements -->
+    <div class="dom-section">
+        <h2>Selecting Elements</h2>
+        <p>Use methods like <code>getElementById</code>, <code>querySelector</code>, or <code>getElementsByClassName</code> to select elements from the DOM.</p>
+        <h3>Syntax:</h3>
+        <pre><code>document.getElementById("id");</code></pre>
+        <h3>Example:</h3>
+        <pre><code>// HTML: <div id="example">Hello</div>
+let element = document.getElementById("example");
+console.log(element.innerHTML);</code></pre>
+        <p>Output:</p>
+        <div class="output" id="selectOutput"></div>
+    </div>
+
+    <!-- Modifying Elements -->
+    <div class="dom-section">
+        <h2>Modifying Elements</h2>
+        <p>Change the content, style, or attributes of an element using JavaScript.</p>
+        <h3>Syntax:</h3>
+        <pre><code>element.innerHTML = "New Content";</code></pre>
+        <h3>Example:</h3>
+        <pre><code>document.getElementById("modifyMe").innerHTML = "Content Updated!";</code></pre>
+        <p>Output:</p>
+        <div class="output" id="modifyOutput"></div>
+    </div>
+
+    <!-- Creating Elements -->
+    <div class="dom-section">
+        <h2>Creating Elements</h2>
+        <p>Create new elements and add them to the DOM dynamically.</p>
+        <h3>Syntax:</h3>
+        <pre><code>let newElement = document.createElement("div");
+newElement.innerHTML = "I am new!";
+document.body.appendChild(newElement);</code></pre>
+        <h3>Example:</h3>
+        <p>Click the button to add a new element:</p>
+        <button onclick="createNewElement()">Add Element</button>
+        <p>Output:</p>
+        <div class="output" id="createOutput"></div>
+    </div>
+
+    <!-- Removing Elements -->
+    <div class="dom-section">
+        <h2>Removing Elements</h2>
+        <p>Remove an element from the DOM using <code>remove</code> or <code>removeChild</code>.</p>
+        <h3>Syntax:</h3>
+        <pre><code>element.remove();</code></pre>
+        <h3>Example:</h3>
+        <p>Click the button to remove the element:</p>
+        <div id="removeMe" style="padding: 10px; background: #ffcccc;">I will be removed!</div>
+        <button onclick="removeElement()">Remove Element</button>
+        <p>Output:</p>
+        <div class="output" id="removeOutput"></div>
+    </div>
+
+    <script>
+        // Selecting Elements Example
+        document.getElementById('selectOutput').innerHTML = 
+            'Example of selecting elements displayed here.';
+
+        // Modifying Elements Example
+        let modifyElement = document.createElement("div");
+        modifyElement.id = "modifyMe";
+        modifyElement.style.padding = "10px";
+        modifyElement.style.backgroundColor = "#cce5ff";
+        modifyElement.innerHTML = "Original Content";
+        document.body.insertBefore(modifyElement, document.body.children[1]);
+
+        document.getElementById("modifyMe").innerHTML = "Content Updated!";
+        document.getElementById('modifyOutput').innerHTML = "Modification complete!";
+
+        // Creating Elements Example
+        function createNewElement() {
+            let newElement = document.createElement("div");
+            newElement.style.padding = "10px";
+            newElement.style.backgroundColor = "#d4edda";
+            newElement.innerHTML = "I am a dynamically created element!";
+            document.getElementById('createOutput').appendChild(newElement);
+        }
+
+        // Removing Elements Example
+        function removeElement() {
+            let elementToRemove = document.getElementById("removeMe");
+            if (elementToRemove) {
+                elementToRemove.remove();
+                document.getElementById('removeOutput').innerHTML = "Element removed successfully!";
+            } else {
+                document.getElementById('removeOutput').innerHTML = "Element already removed!";
+            }
+        }
+    </script>
+    
+</body>
+</html>
